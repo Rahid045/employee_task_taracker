@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Task Tracker - File Reference</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .html { color: #e34c26; font-weight: bold; }
+        .php { color: #777bb4; font-weight: bold; }
+        .description { color: #666; }
+        .connection { background-color: #e3f2fd; padding: 15px; margin: 10px 0; border-left: 4px solid #2196F3; }
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            padding: 12px;
+            border-left: 4px solid #28a745;
+            margin: 10px 0;
+        }
+        ul {
+            line-height: 1.8;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Employee Task Tracker - HTML & PHP File Reference</h1>
+
+    <div class="success">
+        <strong>✓ All HTML files created!</strong> Each HTML file is pre-configured to connect with its corresponding PHP backend file. Simply submit the forms and they'll process your requests.
+    </div>
+
+    <h2>📋 File Connections Overview</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Purpose</th>
+                <th>HTML File</th>
+                <th>PHP Backend</th>
+                <th>Key Fields</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Login</strong></td>
+                <td class="html">login_standalone.html</td>
+                <td class="php">login.php</td>
+                <td>email, password</td>
+            </tr>
+            <tr>
+                <td><strong>Dashboard</strong></td>
+                <td class="html">index_standalone.html</td>
+                <td class="php">index.php</td>
+                <td>search, task filtering</td>
+            </tr>
+            <tr>
+                <td><strong>Create Task</strong></td>
+                <td class="html">task_create_standalone.html</td>
+                <td class="php">task_create.php</td>
+                <td>title, description, priority, status, dates</td>
+            </tr>
+            <tr>
+                <td><strong>View Task</strong></td>
+                <td class="html">task_view_standalone.html</td>
+                <td class="php">task_view.php</td>
+                <td>id parameter, comments, time entries</td>
+            </tr>
+            <tr>
+                <td><strong>Edit Task</strong></td>
+                <td class="html">task_edit_standalone.html</td>
+                <td class="php">task_edit.php</td>
+                <td>id, title, description, priority, status, dates, hours</td>
+            </tr>
+            <tr>
+                <td><strong>Delete Task</strong></td>
+                <td colspan="2">task_delete.php</td>
+                <td>id parameter</td>
+            </tr>
+            <tr>
+                <td><strong>Logout</strong></td>
+                <td class="html">logout_standalone.html</td>
+                <td class="php">logout.php</td>
+                <td>Session destruction</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🔗 How to Use These Files</h2>
+
+    <h3>Method 1: Direct PHP Execution (Recommended for Full Features)</h3>
+    <div class="connection">
+        <p>Your PHP files already include HTML templates and handle everything automatically:</p>
+        <div class="code">
+            1. Open: http://localhost/employee_task_tracker/login.php<br>
+            2. Log in with valid credentials<br>
+            3. Navigate using dashboard links
+        </div>
+    </div>
+
+    <h3>Method 2: Using Standalone HTML Files</h3>
+    <div class="connection">
+        <p>Use the separate HTML files to understand form structure:</p>
+        <div class="code">
+            1. Open: http://localhost/employee_task_tracker/login_standalone.html<br>
+            2. Submit the login form (connects to login.php)<br>
+            3. Redirects to index.php with session<br>
+            4. Continue with regular navigation
+        </div>
+    </div>
+
+    <h2>📝 Form Field Reference</h2>
+
+    <h3>Login Form</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>email</code></td>
+                <td>email</td>
+                <td>✓</td>
+                <td>User's email address</td>
+            </tr>
+            <tr>
+                <td><code>password</code></td>
+                <td>password</td>
+                <td>✓</td>
+                <td>User's password (hashed)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Task Creation/Edit Form</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>title</code></td>
+                <td>text</td>
+                <td>✓</td>
+                <td>Task title</td>
+            </tr>
+            <tr>
+                <td><code>description</code></td>
+                <td>textarea</td>
+                <td></td>
+                <td>Detailed task description</td>
+            </tr>
+            <tr>
+                <td><code>assigned_to</code></td>
+                <td>select</td>
+                <td></td>
+                <td>User ID to assign task to</td>
+            </tr>
+            <tr>
+                <td><code>priority</code></td>
+                <td>select</td>
+                <td></td>
+                <td>low, medium, high</td>
+            </tr>
+            <tr>
+                <td><code>status</code></td>
+                <td>select</td>
+                <td></td>
+                <td>new, in_progress, blocked, completed</td>
+            </tr>
+            <tr>
+                <td><code>start_date</code></td>
+                <td>date</td>
+                <td></td>
+                <td>Task start date</td>
+            </tr>
+            <tr>
+                <td><code>due_date</code></td>
+                <td>date</td>
+                <td></td>
+                <td>Task due date</td>
+            </tr>
+            <tr>
+                <td><code>estimated_hours</code></td>
+                <td>number</td>
+                <td></td>
+                <td>Estimated time in hours</td>
+            </tr>
+            <tr>
+                <td><code>actual_hours</code></td>
+                <td>number</td>
+                <td></td>
+                <td>Actual time spent (edit only)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🔄 Request Flow Examples</h2>
+
+    <h3>Login Flow</h3>
+    <div class="code">
+        HTML Form (login_standalone.html)<br>
+        &nbsp;&nbsp;↓ POST with email & password<br>
+        PHP Backend (login.php)<br>
+        &nbsp;&nbsp;↓ Validates credentials<br>
+        Session Created<br>
+        &nbsp;&nbsp;↓ Redirect to index.php<br>
+        Dashboard with Task List
+    </div>
+
+    <h3>Create Task Flow</h3>
+    <div class="code">
+        HTML Form (task_create_standalone.html)<br>
+        &nbsp;&nbsp;↓ POST with task details<br>
+        PHP Backend (task_create.php)<br>
+        &nbsp;&nbsp;↓ Inserts into database<br>
+        Database Updated<br>
+        &nbsp;&nbsp;↓ Redirect to index.php<br>
+        Dashboard Shows New Task
+    </div>
+
+    <h3>Edit Task Flow</h3>
+    <div class="code">
+        HTML Form (task_edit_standalone.html?id=123)<br>
+        &nbsp;&nbsp;↓ POST with updated task details<br>
+        PHP Backend (task_edit.php?id=123)<br>
+        &nbsp;&nbsp;↓ Updates database record<br>
+        Database Updated<br>
+        &nbsp;&nbsp;↓ Redirect to task_view.php?id=123<br>
+        Task View Shows Updated Info
+    </div>
+
+    <h2>🛡️ Security Features</h2>
+
+    <ul>
+        <li><strong>Session-based Authentication:</strong> All pages check for active session</li>
+        <li><strong>Password Hashing:</strong> Passwords verified using <code>password_verify()</code></li>
+        <li><strong>SQL Injection Prevention:</strong> Prepared statements with parameterized queries</li>
+        <li><strong>Output Escaping:</strong> HTML special characters escaped with <code>htmlspecialchars()</code></li>
+        <li><strong>Role-based Access Control:</strong> Different permissions for employees vs managers</li>
+        <li><strong>CSRF Protection:</strong> Session tokens for form submissions</li>
+    </ul>
+
+    <h2>📍 URL Parameters</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Page</th>
+                <th>Parameter</th>
+                <th>Value Type</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>task_view.php</td>
+                <td><code>id</code></td>
+                <td>integer (task ID)</td>
+                <td>task_view.php?id=5</td>
+            </tr>
+            <tr>
+                <td>task_edit.php</td>
+                <td><code>id</code></td>
+                <td>integer (task ID)</td>
+                <td>task_edit.php?id=5</td>
+            </tr>
+            <tr>
+                <td>index.php</td>
+                <td><code>search</code></td>
+                <td>string (search query)</td>
+                <td>index.php?search=project</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <strong>ℹ️ Note:</strong> For task operations, the task ID must be provided as a URL parameter. The HTML files automatically include these parameters in links and redirects.
+    </div>
+
+    <h2>🚀 Getting Started</h2>
+
+    <ol>
+        <li><strong>Start your local server</strong><br>
+            Make sure Apache and MySQL are running in XAMPP
+        </li>
+        <li><strong>Navigate to login</strong><br>
+            <code>http://localhost/employee_task_tracker/login.php</code>
+        </li>
+        <li><strong>Log in with test account</strong><br>
+            Use valid email and password from your database
+        </li>
+        <li><strong>Create a test task</strong><br>
+            Click "Create Task" and fill in the form
+        </li>
+        <li><strong>View and edit tasks</strong><br>
+            Click View/Edit buttons from the dashboard
+        </li>
+        <li><strong>Test comments and time entries</strong><br>
+            Open a task and add comments or time entries
+        </li>
+        <li><strong>Delete and logout</strong><br>
+            Test deletion and session cleanup
+        </li>
+    </ol>
+
+    <h2>📚 Documentation Files</h2>
+
+    <ul>
+        <li><strong>HTML_PHP_CONNECTION_GUIDE.md</strong> - Detailed technical documentation</li>
+        <li><strong>README.md</strong> - General project information (if available)</li>
+        <li><strong>app/init.php</strong> - PHP helper functions and database connection</li>
+    </ul>
+
+    <div class="success">
+        <strong>✓ You're all set!</strong> All HTML files are ready to connect to your PHP backend. Start with login and enjoy!
+    </div>
+
+</body>
+</html>

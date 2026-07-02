@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Employee Task Tracker</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<style>
+.login-logo {
+    display: block;          /* Makes the image behave like a block element */
+    margin: 0 auto 1rem;     /* Centers it horizontally and adds spacing below */
+    width: 120px;            /* Adjust size (you can tweak this value) */
+    height: auto;            /* Keeps aspect ratio */
+}
+.login-page {
+    display: flex;
+    justify-content: center;   /* Centers horizontally */
+    align-items: center;       /* Centers vertically */
+    height: 100vh;             /* Full viewport height */
+}
+</style>
+
+<body>
+    <main class="login-page">
+        <form class="login-form" method="POST" action="">
+            <img src="images/logo.png" alt="Task Tracker Logo" class="login-logo">
+            <h1>Task Tracker Login</h1>
+            <?php if ($error): ?>
+                <div class="alert error"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <label>Password</label>
+            <input type="password" name="password" required>
+            <button class="button primary" type="submit" onclick="return validateForm('task_create_php');">Sign In</button>
+        </form>
+    </main>
+</body>
+</html>

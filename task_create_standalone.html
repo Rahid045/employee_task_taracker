@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task - Employee Task Tracker</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <main class="container form-page">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1>Create Task</h1>
+            <a class="button secondary" href="index.php">Back to Dashboard</a>
+        </div>
+
+        <div id="error-message" style="display: none;" class="alert error"></div>
+
+        <form method="post" action="task_create.php" id="create-task-form">
+            <div class="form-group">
+                <label for="title">Title <span style="color: red;">*</span></label>
+                <input type="text" id="title" name="title" required placeholder="Enter task title">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" placeholder="Enter task description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="assigned_to">Assign to</label>
+                <select id="assigned_to" name="assigned_to">
+                    <option value="">Unassigned</option>
+                    <!-- Options will be populated from PHP backend -->
+                </select>
+                <small style="display: block; margin-top: 5px;">Note: User list will load from database via PHP backend</small>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="new">New</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="blocked">Blocked</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date" name="start_date">
+            </div>
+
+            <div class="form-group">
+                <label for="due_date">Due Date</label>
+                <input type="date" id="due_date" name="due_date">
+            </div>
+
+            <div class="form-group">
+                <label for="estimated_hours">Estimated Hours</label>
+                <input type="number" id="estimated_hours" name="estimated_hours" step="0.25" placeholder="Enter hours">
+            </div>
+
+            <div class="form-actions" style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="button primary" type="submit">Save Task</button>
+                <a class="button secondary" href="index.php">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Form validation before submission
+        document.getElementById('create-task-form').addEventListener('submit', function(e) {
+            const title = document.getElementById('title').value.trim();
+            
+            if (!title) {
+                e.preventDefault();
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = 'Title is required';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // Format start date and due date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('start_date').min = today;
+        document.getElementById('due_date').min = today;
+    </script>
+</body>
+</html>

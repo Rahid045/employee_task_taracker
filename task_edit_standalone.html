@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task - Employee Task Tracker</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <main class="container form-page">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1>Edit Task</h1>
+            <a class="button secondary" id="back-link" href="task_view.php">Back to Task</a>
+        </div>
+
+        <div id="error-message" style="display: none;" class="alert error"></div>
+
+        <form method="post" action="task_edit.php" id="edit-task-form">
+            <input type="hidden" id="task-id" name="id" value="">
+
+            <div class="form-group">
+                <label for="title">Title <span style="color: red;">*</span></label>
+                <input type="text" id="title" name="title" required placeholder="Enter task title">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" placeholder="Enter task description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="assigned_to">Assign to</label>
+                <select id="assigned_to" name="assigned_to">
+                    <option value="">Unassigned</option>
+                    <!-- Options will be populated from PHP backend -->
+                </select>
+                <small style="display: block; margin-top: 5px;">Note: User list will load from database via PHP backend</small>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="new">New</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="blocked">Blocked</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date" name="start_date">
+            </div>
+
+            <div class="form-group">
+                <label for="due_date">Due Date</label>
+                <input type="date" id="due_date" name="due_date">
+            </div>
+
+            <div class="form-group">
+                <label for="estimated_hours">Estimated Hours</label>
+                <input type="number" id="estimated_hours" name="estimated_hours" step="0.25" placeholder="Enter hours">
+            </div>
+
+            <div class="form-group">
+                <label for="actual_hours">Actual Hours</label>
+                <input type="number" id="actual_hours" name="actual_hours" step="0.25" placeholder="Enter hours">
+            </div>
+
+            <div class="form-actions" style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="button primary" type="submit">Update Task</button>
+                <a class="button secondary" id="cancel-link" href="task_view.php">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Get task ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const taskId = urlParams.get('id');
+
+        if (!taskId) {
+            alert('No task ID provided');
+            window.location.href = 'index.php';
+        }
+
+        // Set task ID in form and update links
+        document.getElementById('task-id').value = taskId;
+        document.getElementById('back-link').href = 'task_view.php?id=' + taskId;
+        document.getElementById('cancel-link').href = 'task_view.php?id=' + taskId;
+
+        // Form validation before submission
+        document.getElementById('edit-task-form').addEventListener('submit', function(e) {
+            const title = document.getElementById('title').value.trim();
+            
+            if (!title) {
+                e.preventDefault();
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = 'Title is required';
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // Format date fields
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('start_date').min = today;
+        document.getElementById('due_date').min = today;
+
+        console.log('Edit task page loaded for task ID: ' + taskId);
+        console.log('Connect to task_edit.php?id=' + taskId + ' to fetch task data for pre-filling form.');
+    </script>
+</body>
+</html>
